@@ -9,7 +9,7 @@ public class Caja {
 
     public Caja() {
         filaClientes = new LinkedList<>();
-        tiempoTotalDeCaja = sumarTiempoTotal();
+        //tiempoTotalDeCaja = sumarTiempoTotal();
     }
 
     public Queue<Cliente> getFilaClientes() {
@@ -44,13 +44,4 @@ public class Caja {
     public String toString() {
         return "\nCaja: fila de Clientes: " + filaClientes + " Tiempo de total de la caja " + tiempoTotalDeCaja;
     }
-
-    public double sumarTiempoTotal() {
-        double i = 0;
-        for (Cliente c : filaClientes)
-            i += c.getTiempoEspera();
-        return i;
-    }
-
-
 }

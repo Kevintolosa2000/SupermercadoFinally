@@ -50,8 +50,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente: medioPago:" + medioPago +
-                " tipoCliente: " + tipoCliente + " cantidadArticulos: " + cantidadArticulos + " tiempo de espera del cliente: "+ tiempoEspera;
+        return "Cliente: medioPago:" + medioPago;
+       /* return "Cliente: medioPago:" + medioPago +
+                " tipoCliente: " + tipoCliente + " cantidadArticulos: " + cantidadArticulos + " tiempo de espera del cliente: "+ tiempoEspera;*/
     }
 
     private double calcularTiempo() {

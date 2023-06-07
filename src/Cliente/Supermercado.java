@@ -91,9 +91,6 @@ public class Supermercado {
     public void asignarClientesACajas() {
         Double i = (double) 0;
         while (!filaEspera.isEmpty()) {
-//            Caja cajaMenorFila = obtenerCajaConMenorFila();
-//            cajaMenorFila.setTiempoTotalDeCaja(filaEspera.peek().getTiempoEspera());
-//            cajaMenorFila.agregarCliente(filaEspera.poll());
             Caja cajaMenorFila = obtenerCajaConMenorFila();
             Cliente clienteActual = filaEspera.poll();
             i += clienteActual.getTiempoEspera();
@@ -102,6 +99,7 @@ public class Supermercado {
         }
     }
 
+
     private Caja obtenerCajaConMenorFila() {
         Caja cajaMenorFila = cajas.get(0);
         int menorTamanoFila = cajaMenorFila.estaVacia() ? 0 : cajaMenorFila.getFilaClientes().size();
@@ -109,6 +107,10 @@ public class Supermercado {
         for (int i = 1; i < cajas.size(); i++) {
             Caja caja = cajas.get(i);
             int tamanoFila = caja.estaVacia() ? 0 : caja.getFilaClientes().size();
+//            if(caja.estaVacia())
+//                tamanoFila=0;
+//            else
+//                tamanoFila=caja.getFilaClientes().size();
             if (tamanoFila < menorTamanoFila) {
                 menorTamanoFila = tamanoFila;
                 cajaMenorFila = caja;
