@@ -93,11 +93,25 @@ public class Supermercado {
             Caja cajaMenorFila = obtenerCajaConMenorFila();
             Cliente clienteActual = filaEspera.poll();
 
-/* ACA PDRIAS PONER DIRECTAMENTE EL cajaMenorFila.cantidadDeProblemas() >= 3
- PERO SUPUESTAMENTE NO VERIFICARIA AL ULTIMO CLIENTE
- **/
-            if (clienteActual.getMedioPago().equals("Tarjeta c/problemas") && cajaMenorFila.cantidadDeProblemas() >= 3)
-            {
+            boolean problemasDeTarjeta = false;
+
+            for (Caja caja : cajas) {
+
+                if (clienteActual.getMedioPago().equals("Tarjeta c/problemas")) {
+                    int clientesConProblemasDeTarjeta = 0;
+                    for (Cliente c : caja.getFilaClientes()) {
+                        if (c.getMedioPago().equals("Tarjeta c/problemas")) {
+                            clientesConProblemasDeTarjeta++;
+                        }
+                    }
+
+                    if (clientesConProblemasDeTarjeta >= 2) {
+                        problemasDeTarjeta = true;
+                        break;  // Salir del bucle si hay problemas de tarjeta en la caja actual
+                    }
+                }
+            }
+            if (problemasDeTarjeta) {
                 throw new ExcepcionTarjetaProblemas();
             }
 
@@ -107,6 +121,17 @@ public class Supermercado {
         }
     }
 
+    public void atender() {
+
+        int i = 0;
+        for (Caja cajitas : cajas) {
+
+            System.out.println("EL tiempo de la caja" + i + " es: " + cajitas.getTiempoTotalDeCaja());
+            i++;
+
+        }
+        cajas.removeAll(cajas);
+    }
 
     /**
      * EL VIEJO SIRVE PARA SUMAR TODU

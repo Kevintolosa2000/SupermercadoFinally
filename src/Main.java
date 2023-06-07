@@ -16,19 +16,37 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        Supermercado disco = new Supermercado(2);
+        Supermercado disco = new Supermercado(3);
 
         try {
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 9; i++) {
                 disco.nuevoCliente();
                 disco.asignarClientesACajas();
             }
+
             System.out.println(disco.toString());
 
         } catch (ExcepcionTarjetaProblemas e) {
             System.out.println("Error");
+        } finally {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("archivoAEscribir.json"))) {
+                gson.toJson(disco, Supermercado.class, bufferedWriter);
+            } catch (IOException e) {
+                System.out.println("Error al escribir en el archivo JSON");
+            }
+
+            /** Esto borra todu**/
+
+            disco.atender();
+            if (disco.getCajas().isEmpty()) {
+                System.out.println("Vacia :D");
+            } else {
+                System.out.println("No funca :c");
+            }
+            System.out.println(disco.toString());
+
         }
     }
-
-
 }

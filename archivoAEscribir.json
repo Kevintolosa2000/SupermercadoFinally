@@ -1,0 +1,84 @@
+{
+  "cajas": [
+    {
+      "filaClientes": [
+        {
+          "medioPago": "Tarjeta s/problemas",
+          "tipoCliente": "Comun",
+          "cantidadArticulos": 18,
+          "tiempoEspera": 702.0
+        },
+        {
+          "medioPago": "Tarjeta s/problemas",
+          "tipoCliente": "Embarazada",
+          "cantidadArticulos": 17,
+          "tiempoEspera": 688.5
+        },
+        {
+          "medioPago": "Tarjeta c/problemas",
+          "tipoCliente": "Comun",
+          "cantidadArticulos": 7,
+          "tiempoEspera": 346.5
+        }
+      ],
+      "tiempoTotalDeCaja": 1737.0
+    },
+    {
+      "filaClientes": [
+        {
+          "medioPago": "Efectivo",
+          "tipoCliente": "Comun",
+          "cantidadArticulos": 9,
+          "tiempoEspera": 337.5
+        },
+        {
+          "medioPago": "Efectivo",
+          "tipoCliente": "Comun",
+          "cantidadArticulos": 20,
+          "tiempoEspera": 750.0
+        },
+        {
+          "medioPago": "Tarjeta s/problemas",
+          "tipoCliente": "Comun",
+          "cantidadArticulos": 12,
+          "tiempoEspera": 468.0
+        }
+      ],
+      "tiempoTotalDeCaja": 1555.5
+    },
+    {
+      "filaClientes": [
+        {
+          "medioPago": "Tarjeta c/problemas",
+          "tipoCliente": "Jubilado",
+          "cantidadArticulos": 7,
+          "tiempoEspera": 367.5
+        },
+        {
+          "medioPago": "Efectivo",
+          "tipoCliente": "Jubilado",
+          "cantidadArticulos": 27,
+          "tiempoEspera": 1093.5
+        },
+        {
+          "medioPago": "Tarjeta s/problemas",
+          "tipoCliente": "Jubilado",
+          "cantidadArticulos": 10,
+          "tiempoEspera": 420.0
+        }
+      ],
+      "tiempoTotalDeCaja": 1881.0
+    }
+  ],
+  "filaEspera": [],
+  "tiposPago": [
+    "Efectivo",
+    "Tarjeta s/problemas",
+    "Tarjeta c/problemas"
+  ],
+  "tiposCliente": [
+    "Comun",
+    "Jubilado",
+    "Embarazada"
+  ]
+}
