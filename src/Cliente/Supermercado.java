@@ -88,17 +88,39 @@ public class Supermercado {
         filaEspera.add(cliente);
     }
 
-    public void asignarClientesACajas() {
-        Double i = (double) 0;
+    public void asignarClientesACajas() throws ExcepcionTarjetaProblemas {
         while (!filaEspera.isEmpty()) {
             Caja cajaMenorFila = obtenerCajaConMenorFila();
             Cliente clienteActual = filaEspera.poll();
-            i += clienteActual.getTiempoEspera();
-            cajaMenorFila.setTiempoTotalDeCaja(i);
+
+/* ACA PDRIAS PONER DIRECTAMENTE EL cajaMenorFila.cantidadDeProblemas() >= 3
+ PERO SUPUESTAMENTE NO VERIFICARIA AL ULTIMO CLIENTE
+ **/
+            if (clienteActual.getMedioPago().equals("Tarjeta c/problemas") && cajaMenorFila.cantidadDeProblemas() >= 3)
+            {
+                throw new ExcepcionTarjetaProblemas();
+            }
+
+            double tiempoCliente = clienteActual.getTiempoEspera();
+            cajaMenorFila.setTiempoTotalDeCaja(cajaMenorFila.getTiempoTotalDeCaja() + tiempoCliente);
             cajaMenorFila.agregarCliente(clienteActual);
         }
     }
 
+
+    /**
+     * EL VIEJO SIRVE PARA SUMAR TODU
+     * //    public void asignarClientesACajas() {
+     * //        Double i = (double) 0;
+     * //        while (!filaEspera.isEmpty()) {
+     * //            Caja cajaMenorFila = obtenerCajaConMenorFila();
+     * //            Cliente clienteActual = filaEspera.poll();
+     * //            i += clienteActual.getTiempoEspera();
+     * //            cajaMenorFila.setTiempoTotalDeCaja(i);
+     * //            cajaMenorFila.agregarCliente(clienteActual);
+     * //        }
+     * //    }
+     **/
 
     private Caja obtenerCajaConMenorFila() {
         Caja cajaMenorFila = cajas.get(0);
@@ -125,6 +147,5 @@ public class Supermercado {
         return "Supermercado: cajas: " + cajas +
                 "\nfilaEspera: " + filaEspera;
     }
-
 
 }

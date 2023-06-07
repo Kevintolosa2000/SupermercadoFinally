@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class Caja {
     private Queue<Cliente> filaClientes;
-    private Double tiempoTotalDeCaja;
+    private Double tiempoTotalDeCaja=0.0;
 
     public Caja() {
         filaClientes = new LinkedList<>();
@@ -38,6 +38,20 @@ public class Caja {
 
     public void setTiempoTotalDeCaja(Double tiempoTotalDeCaja) {
         this.tiempoTotalDeCaja = tiempoTotalDeCaja;
+    }
+
+    public int cantidadDeProblemas()
+    {
+        int i=0;
+        for(Cliente c : filaClientes)
+        {
+            if(c.getMedioPago().equals("Tarjeta c/problemas"))
+            {
+                i++;
+                System.out.println(""+ i);
+            }
+        }
+        return i;
     }
 
     @Override
